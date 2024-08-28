@@ -14,14 +14,15 @@ async function main () {
 
   // 1. 链接合约，读取seed种子，以及要计算的hash难度
 
-  const wallet = Address.parse('UQCTU9tGq16RGCsbMWzQ6_FVJaVOAiWUG3CyLk0Ywo1BD4Sx');
+  // const wallet = Address.parse('UQCTU9tGq16RGCsbMWzQ6_FVJaVOAiWUG3CyLk0Ywo1BD4Sx');
+  const wallet = Address.parse('UQDbkRGNOQA5xQzczBOM7cqnrH_tqwW1MzMIP9SnYex2wTnH');
 
   // const collection = Address.parse('https://testnet.getgems.io/collection');
   const collection = Address.parse('EQDk8N7xM5D669LC2YACrseBJtDyFqwtSPCNhRWXU7kjEptX');
 
   const endpoint = await getHttpEndpoint({
     // host:"https://testnet.toncenter.com/api/v2/jsonRPC",
-    network: "testnet",
+    // network: "testnet", // 注释掉就是主网
   });
 
   const client = new TonClient({ endpoint });
