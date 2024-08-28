@@ -10,6 +10,7 @@ import {MineMessageParams, Queries} from "./src/giver/NftGiver.data";
 
 import {toNano} from "ton"
 
+// 示例是链接到Rocket智能合约，并挖掘Rocket Nft的一个实例。
 async function main () {
 
   // 1. 链接合约，读取seed种子，以及要计算的hash难度
