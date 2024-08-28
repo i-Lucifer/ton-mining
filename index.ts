@@ -12,6 +12,8 @@ import {toNano} from "ton"
 
 async function main () {
 
+  // 1. 链接合约，读取seed种子，以及要计算的hash难度
+
   const wallet = Address.parse('UQCTU9tGq16RGCsbMWzQ6_FVJaVOAiWUG3CyLk0Ywo1BD4Sx');
 
   // const collection = Address.parse('https://testnet.getgems.io/collection');
@@ -63,6 +65,7 @@ async function main () {
   console.log("====================")
   console.log("")
 
+  // 2. 循环计算工作量证明hash
   const mineParams : MineMessageParams = {
     expire: unixNow() + 300, // 5分钟完成一次转账交易
     mintTo: wallet,
@@ -97,25 +100,29 @@ async function main () {
   console.log("If someone else sends a transaction before you, the seed changes, and you'll have to find the hash again!");
   console.log(' ');
 
-  // flags work only in user-friendly address form
+  // 3. 构建支付链接，进行区块打包
+  // 转化为友好地址形式
   const collectionAddr = collection.toFriendly({
     urlSafe: true,
     bounceable: true,
   })
-  // we must convert TON to nanoTON
+  // 将Ton转化为nanoTon
   const amountToSend = toNano('0.05').toString()
  // BOC means Bag Of Cells here
   const preparedBodyCell = msg.toBoc().toString('base64url')
 
-  // final method to build a payment URL
+  // 构建支付链接的闭包函数
   const tonDeepLink = (address: string, amount: string, body: string) => {
     return `ton://transfer/${address}?amount=${amount}&bin=${body}`;
   };
 
+  // 构建支付链接
   const link = tonDeepLink(collectionAddr, amountToSend, preparedBodyCell);
 
   console.log('🚀 Link to receive an NFT:') // 支付链接
   console.log(link);
+
+  // 4. 为支付链接生成支付二维码
 }
 
 main()
