@@ -68,19 +68,27 @@ async function main () {
     seed // 从 get_mining_data 接口获取的唯一种子
   };
 
-  let msg = Queries.mine(mineParams); // transaction builder
+  let msg = Queries.mine(mineParams);
+  let progress = 0;
 
-  console.log('Transaction hash:', msg.hash())
-
-  // 循环计算hash值
   while (new BN(msg.hash(), 'be').gt(complexity)) {
+    progress += 1
+    console.clear()
+    console.log(`Mining started: please, wait for 30-60 seconds to mine your NFT!`)
+    console.log(' ')
+    console.log(`⛏ Mined ${progress} hashes! Last: `, new BN(msg.hash(), 'be').toString())
+
     mineParams.expire = unixNow() + 300
     mineParams.data1.iaddn(1)
     msg = Queries.mine(mineParams)
-    console.log('hash:', msg.hash())
   }
 
-  console.log('Yoo-hoo, you found something!')
+  console.log(' ')
+  console.log('💎 Mission completed: msg_hash less than pow_complexity found!');
+  console.log(' ')
+  console.log('msg_hash: ', new BN(msg.hash(), 'be').toString())
+  console.log('pow_complexity: ', complexity.toString())
+  console.log('msg_hash < pow_complexity: ', new BN(msg.hash(), 'be').lt(complexity))
 }
 
 main()
