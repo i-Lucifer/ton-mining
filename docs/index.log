@@ -1,0 +1,55 @@
+> ton-onboarding-challenge@1.0.0 start
+> ts-node index.ts
+
+{
+  gas_used: 2374,
+  stack: [
+    [
+      'num',
+      '0x1000000000000000000000000000000000000000000000000000000000000000'
+    ],
+    [ 'num', '0x66ccb931' ],
+    [ 'num', '0x465e0ea6bb6bec988cbe44adaa0c3f9a' ],
+    [ 'num', '0x1e' ],
+    [ 'num', '0xab' ],
+    [ 'num', '0xfc' ]
+  ]
+}
+
+complexity <BN: 1000000000000000000000000000000000000000000000000000000000000000>
+last_success [ 'num', '0x66ccb931' ] ===> 1724692785
+seed [ 'num', '0x465e0ea6bb6bec988cbe44adaa0c3f9a' ] ===> <BN: 465e0ea6bb6bec988cbe44adaa0c3f9a>
+target_delta [ 'num', '0x1e' ] ===> 30
+min_cpl [ 'num', '0xab' ] ===> 171
+max_cpl [ 'num', '0xfc' ] ===> 252
+
+Transaction hash: <Buffer 8e 3b c1 bd a2 80 c5 e9 02 82 e9 cf cb f1 33 57 67 34 a2 29 82 43 ee 18 30 2a 32 35 27 bb c4 b2>
+hash: <Buffer 6a 68 94 f4 9c c4 34 09 83 6a 92 29 ad 67 27 a1 a0 47 c8 83 14 c9 1c 59 a4 74 4d 14 6f cf da ba>
+hash: <Buffer f8 5a 78 10 75 94 55 54 7d d2 5f 8d 38 2b 5c 9d ce cb 84 d5 71 44 91 d0 1b cb f0 6d fc 7b c9 99>
+hash: <Buffer 79 64 c8 37 5a 89 94 bb 4f db f2 7c ae 71 57 20 a2 e9 18 e7 99 13 0f 41 ad 2f 0e 43 ce 51 2c e2>
+hash: <Buffer 0a ce 4e c0 d6 d9 95 49 de ba 3c 01 81 23 8c 08 d4 13 ba f9 c5 33 2c fd 07 ed 7c e3 f0 44 2b b1>
+Yoo-hoo, you found something!
+
+
+Mining started: please, wait for 30-60 seconds to mine your NFT!
+⛏ Mined 22 hashes! Last:  100094571512029935647099897345325148483483251054136325406143721473680908199074
+💎 Mission completed: msg_hash less than pow_complexity found!
+msg_hash:  3018251177128171197014778830765011466427081012932810173680876206069519256323
+pow_complexity:  7237005577332262213973186563042994240829374041602535252466099000494570602496
+msg_hash < pow_complexity:  true
+
+Mining started: please, wait for 30-60 seconds to mine your NFT!
+ 
+⛏ Mined 3 hashes! Last:  37895148035562238895015028159918893434363179439613713530082883003940802806225
+ 
+💎 Mission completed: msg_hash less than pow_complexity found!
+ 
+msg_hash:  647413782761122615295673358505914811201920206553034676237217718432372953349
+pow_complexity:  7237005577332262213973186563042994240829374041602535252466099000494570602496
+msg_hash < pow_complexity:  true
+ 
+💣 WARNING! As soon as you find the hash, you should quickly send the transaction.
+If someone else sends a transaction before you, the seed changes, and you'll have to find the hash again!
+ 
+🚀 Link to receive an NFT:
+ton://transfer/EQDk8N7xM5D669LC2YACrseBJtDyFqwtSPCNhRWXU7kjEptX?amount=50000000&bin=te6ccsEBAQEAfAB8APNNaW5lZs6zBYASanto1WvSIwVjZi2aHX4qpLSpwESyg24WRcmjGFGoIeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaMvB1NdtfZMRl8iVtUGH80AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcF7SJWc
