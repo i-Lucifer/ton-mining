@@ -5,6 +5,9 @@ import {getHttpEndpoint} from "@orbs-network/ton-access";
 
 import {BN} from 'bn.js'
 
+import {unixNow} from "./src/lib/utils";
+import {MineMessageParams, Queries} from "./src/giver/NftGiver.data";
+
 async function main () {
 
   const wallet = Address.parse('UQCTU9tGq16RGCsbMWzQ6_FVJaVOAiWUG3CyLk0Ywo1BD4Sx');
@@ -54,7 +57,30 @@ async function main () {
   console.log('target_delta',miningData.stack[3],"===>",target_delta.toString());
   console.log('min_cpl',miningData.stack[4],"===>", min_cpl.toString());
   console.log('max_cpl',miningData.stack[5],"===>", max_cpl.toString());
+  console.log("")
+  console.log("====================")
+  console.log("")
 
+  const mineParams : MineMessageParams = {
+    expire: unixNow() + 300, // 5分钟完成一次转账交易
+    mintTo: wallet,
+    data1: new BN(0), // 要在矿机中递增的临时变量，计数器
+    seed // 从 get_mining_data 接口获取的唯一种子
+  };
+
+  let msg = Queries.mine(mineParams); // transaction builder
+
+  console.log('Transaction hash:', msg.hash())
+
+  // 循环计算hash值
+  while (new BN(msg.hash(), 'be').gt(complexity)) {
+    mineParams.expire = unixNow() + 300
+    mineParams.data1.iaddn(1)
+    msg = Queries.mine(mineParams)
+    console.log('hash:', msg.hash())
+  }
+
+  console.log('Yoo-hoo, you found something!')
 }
 
 main()
