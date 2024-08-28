@@ -123,6 +123,15 @@ async function main () {
   console.log(link);
 
   // 4. 为支付链接生成支付二维码
+  const qrcode = require('qrcode-terminal');
+
+  qrcode.generate(link, {small: true}, function (qrcode : any) {
+    console.log('🚀 Link to mine your NFT (use Tonkeeper in testnet mode):')
+    console.log(qrcode);
+    console.log('* If QR is still too big, please run script from the terminal. (or make the font smaller)')
+  });
+
+  // 5. 付款后，就挖掘到一个NFT（非同质化货币）
 }
 
 main()
